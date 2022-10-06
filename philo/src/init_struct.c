@@ -6,7 +6,7 @@
 /*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:19:17 by dhomem-d          #+#    #+#             */
-/*   Updated: 2022/10/05 21:25:40 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/10/06 21:32:46 by dhomem-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ int	init_mut(t_rules *rules)
 	if (pthread_mutex_init(&(rules->death_lock), NULL))
 		return (1);
 	if (pthread_mutex_init(&(rules->increment_lock), NULL))
-		return (1);
-	if (pthread_mutex_init(&(rules->meal_lock), NULL))
 		return (1);
 	return (0);
 }

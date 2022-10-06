@@ -6,7 +6,7 @@
 /*   By: dhomem-d <dhomem-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:08:48 by dhomem-d          #+#    #+#             */
-/*   Updated: 2022/10/05 23:00:40 by dhomem-d         ###   ########.fr       */
+/*   Updated: 2022/10/06 22:48:20 by dhomem-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ long long	time_since_last(t_rules *rules, t_philo *philo)
 
 long long	time_until_death(t_rules *rules, t_philo *philo)
 {
-	long long	temp = time_since_last(rules, philo);
+	long long	temp;
+
+	temp = time_since_last(rules, philo);
 	if (temp > rules->time_die)
 		return (0);
 	return (rules->time_die - temp);
@@ -50,8 +52,8 @@ int	is_dying(t_rules *rules, t_philo *philo, int fork)
 
 void	release_forks(t_rules *rules, t_philo *philo)
 {
-	pthread_mutex_unlock(&rules->forks[philo->left_fork_id]);
-	pthread_mutex_unlock(&rules->forks[philo->right_fork_id]);
 	rules->forks_bool[philo->left_fork_id] = 0;
 	rules->forks_bool[philo->right_fork_id] = 0;
+	pthread_mutex_unlock(&rules->forks[philo->left_fork_id]);
+	pthread_mutex_unlock(&rules->forks[philo->right_fork_id]);
 }
